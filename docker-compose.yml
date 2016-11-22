@@ -1,0 +1,11 @@
+elasticsearch:
+  image: elasticsearch:5.0.1
+  container_name: elasticsearch
+  ports:
+    - "9200:9200"
+kibana:
+  image: kibana:5.0.1
+  environment:
+    - ELASTICSEARCH_URL=http://elasticsearch:9200
+  ports:
+    - "5601:5601"
