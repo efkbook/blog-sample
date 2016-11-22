@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+{{ template "header" . }}
+<body>
+    <header>
+        <h1>New Article: go-wiki</h1>
+    </header>
+    {{ template "global-navigator" . }}
+    <article>
+        <form action="/save" method="POST">
+            {{ template "csrf-hidden" . }}
+            <input type="text" name="title">
+            <textarea id="" name="body" cols="30" rows="10">
+            </textarea>
+            <input type="submit" value="save">
+        </form>
+    </article>
+    <aside>
+        <h2></h2>
+    </aside>
+    {{ template "footer" .}}
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+{{ template "header" . }}
+<body>
+    <header>
+        <h1>Login</h1>
+    </header>
+    {{ template "global-navigator" . }}
+    <article>
+        <form action="/logout" method="POST">
+            {{ template "csrf-hidden" . }}
+            <input type="submit" value="logout">
+        </form>
+    </article>
+    {{ template "footer" .}}
+</body>
+</html>

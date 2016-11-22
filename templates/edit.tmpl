@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+{{ template "header" . }}
+<body>
+    <header>
+        <h1>Edit Article: go-wiki</h1>
+    </header>
+    {{ template "global-navigator" . }}
+    <article>
+        <form action="/save" method="POST">
+            {{ template "csrf-hidden" . }}
+            <input type="hidden" name="id" value="{{.article.ID}}">
+            <input type="text" name="title" value="{{.article.Title}}">
+            <textarea id="" name="body" cols="30" rows="10">{{.article.Body}}</textarea>
+            <input type="submit" value="save">
+        </form>
+        <form action="/delete" method="POST">
+            {{ template "csrf-hidden" . }}
+            <input type="hidden" name="id" value="{{.article.ID}}">
+            <input type="submit" value="delete">
+        </form>
+    </article>
+    <aside>
+        <h2></h2>
+    </aside>
+    {{ template "footer" .}}
+</body>
+</html>

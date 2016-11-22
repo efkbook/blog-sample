@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+{{ template "header" . }}
+<body>
+    <header>
+        <h1>go-wiki</h1>
+    </header>
+    {{ template "global-navigator" . }}
+    <article>
+        <header>
+            <h2>{{ .article.Title }}</h2>
+            <p>posted on today {{.article.Created}}</p>
+            <p>updated {{.article.Updated}}</p>
+        </header>
+        <div id="article">
+            {{ .article.Body }}
+        </div>
+        <p><a href="/article/{{.article.ID}}/edit">edit this</a></p>
+    </article>
+    <aside>
+        <h2></h2>
+    </aside>
+    {{ template "footer" .}}
+</body>
+</html>

@@ -6,15 +6,19 @@ A kind of blog.
 
 * Docker
 * Go (>= 1.7)
+* sqlite3
 
-## boot
+## Bootstrap
 
     make deps
-    make install
 
-## how to run
+## How to run
 
     make run
+
+## Acknowledgement
+
+This app based on [https://github.com/suzuken/wiki]().
 
 ## LICENSE
 

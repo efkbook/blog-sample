@@ -1,0 +1,30 @@
+{{ define "header" }}
+<head>
+    <meta charset="UTF-8">
+    <title>{{ .title }}</title>
+</head>
+{{end}}
+
+{{ define "global-navigator" }}
+<nav>
+    <a href="/">HOME</a> |
+    {{ if LoggedIn .context}}
+    <a href="/new">NEW ARTICLE</a> |
+    <a href="/logout">LOG OUT</a> |
+    Hi, {{ CurrentName .context}}
+    {{else}}
+    <a href="/signup">SIGN UP</a> |
+    <a href="/login">LOGIN</a>
+    {{end}}
+</nav>
+{{end}}
+
+{{ define "csrf-hidden" }}
+<input type="hidden" name="_csrf" value="{{.csrf}}">
+{{end}}
+
+{{ define "footer" }}
+<footer>
+    <p>wiki created by <a href="https://github.com/suzuken">@suzuken</a></p>
+</footer>
+{{end}}
