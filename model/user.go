@@ -30,7 +30,7 @@ func UserExists(db *sql.DB, email string) (bool, error) {
 func (u *User) Update(tx *sql.Tx) (sql.Result, error) {
 	stmt, err := tx.Prepare(`
 	update users
-		set name = ?, email = ?
+		set name = ?, email = ?, updated = CURRENT_TIMESTAMP
 		where user_id = ?
 	`)
 	if err != nil {
@@ -43,8 +43,8 @@ func (u *User) Update(tx *sql.Tx) (sql.Result, error) {
 // Insert inserts new user.
 func (u *User) Insert(tx *sql.Tx, password string) (sql.Result, error) {
 	stmt, err := tx.Prepare(`
-	insert into users (name, email, salt, salted)
-	values(?, ?, ?, ?)
+	insert into users (name, email, salt, salted, created, updated)
+	values(?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
 	`)
 	if err != nil {
 		return nil, err

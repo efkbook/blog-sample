@@ -5,8 +5,8 @@ create table users (
     email text,
     salt text,
     salted text,
-    created integer,
-    updated integer
+    created timestamp not null,
+    updated timestamp
 );
 
 -- +migrate Down

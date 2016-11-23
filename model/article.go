@@ -20,7 +20,7 @@ func ArticleOne(db *sql.DB, id int64) (Article, error) {
 func (t *Article) Update(tx *sql.Tx) (sql.Result, error) {
 	stmt, err := tx.Prepare(`
 	update articles
-		set title = ?, body = ?
+		set title = ?, body = ?, updated = CURRENT_TIMESTAMP
 		where article_id = ?
 	`)
 	if err != nil {
@@ -33,8 +33,8 @@ func (t *Article) Update(tx *sql.Tx) (sql.Result, error) {
 // Insert inserts new article.
 func (t *Article) Insert(tx *sql.Tx) (sql.Result, error) {
 	stmt, err := tx.Prepare(`
-	insert into articles (title, body)
-	values(?, ?)
+	insert into articles (title, body, created, updated)
+	values(?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
 	`)
 	if err != nil {
 		return nil, err

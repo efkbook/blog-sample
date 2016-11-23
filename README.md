@@ -18,7 +18,7 @@ A kind of blog.
 
 ## Acknowledgement
 
-This app based on [https://github.com/suzuken/wiki]().
+This app based on [suzuken/wiki](https://github.com/suzuken/wiki).
 
 ## LICENSE
 
