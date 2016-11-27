@@ -1,4 +1,5 @@
 version: "2.0"
+
 services:
   elasticsearch:
     image: elasticsearch:5.0.1
@@ -10,3 +11,9 @@ services:
       - ELASTICSEARCH_URL=http://elasticsearch:9200
     ports:
       - 5601:5601
+  fluentd:
+    build:
+      context: .
+      dockerfile: Dockerfile-fluentd
+    ports:
+      - 24224:24224
