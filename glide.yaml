@@ -1,11 +1,9 @@
 package: github.com/suzuken/blog-sample
 import:
-- package: github.com/gin-gonic/contrib
-  subpackages:
-  - sessions
 - package: github.com/gin-gonic/gin
   version: ^1.0.0
 - package: github.com/mattn/go-sqlite3
   version: ^1.2.0
 - package: github.com/utrack/gin-csrf
 - package: gopkg.in/yaml.v2
+- package: github.com/gin-gonic/contrib
