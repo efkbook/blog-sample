@@ -2,22 +2,19 @@
 <html lang="en">
 {{ template "header" . }}
 <body>
-    <header>
-        <h1>New Article: go-wiki</h1>
-    </header>
     {{ template "global-navigator" . }}
-    <article>
+    <div class="container">
         <form action="/save" method="POST">
             {{ template "csrf-hidden" . }}
-            <input type="text" name="title">
-            <textarea id="" name="body" cols="30" rows="10">
-            </textarea>
-            <input type="submit" value="save">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" name="title" class="form-control" id="title" placeholder="title">
+            </div>
+            <label for="body">body</label>
+            <textarea class="form-control" id="body" name="body" rows="10"></textarea>
+            <input type="submit" value="save" class="btn btn-default">
         </form>
-    </article>
-    <aside>
-        <h2></h2>
-    </aside>
     {{ template "footer" .}}
+    </div>
 </body>
 </html>

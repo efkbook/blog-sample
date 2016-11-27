@@ -2,22 +2,20 @@
 <html lang="en">
 {{ template "header" . }}
 <body>
-    <header>
-        <h1>SignUp</h1>
-    </header>
+    <div class="container">
+    <h1>SignUp</h1>
     {{ template "global-navigator" . }}
-    <article>
         <form action="/signup" method="POST">
             {{ template "csrf-hidden" . }}
             <label for="email">email</label>
-            <input type="text" name="email" value="">
+            <input type="email" class="form-control" name="email" placeholder="email" value="">
             <label for="name">name</label>
-            <input type="text" name="name" value="">
+            <input type="text" class="form-control" name="name" placeholder="email" value="">
             <label for="password">password</label>
-            <input type="password" name="password" value="">
-            <input type="submit" value="signup">
+            <input type="password" class="form-control" name="password" placeholder="password" value="">
+            <input type="submit" value="signup" class="btn btn-default">
         </form>
-    </article>
     {{ template "footer" .}}
+    </div>
 </body>
 </html>

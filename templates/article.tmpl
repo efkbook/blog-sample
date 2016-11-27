@@ -2,24 +2,61 @@
 <html lang="en">
 {{ template "header" . }}
 <body>
-    <header>
-        <h1>go-wiki</h1>
-    </header>
     {{ template "global-navigator" . }}
-    <article>
-        <header>
-            <h2>{{ .article.Title }}</h2>
-            <p>posted on today {{.article.Created}}</p>
-            <p>updated {{.article.Updated}}</p>
-        </header>
-        <div id="article">
-            {{ .article.Body }}
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <!-- Blog Post Content Column -->
+            <div class="col-lg-8">
+                <!-- Blog Post -->
+                <!-- Title -->
+                <h1>{{ .article.Title }}</h1>
+
+                <!-- Author -->
+                <p class="lead">
+                    by <a href="#">Start Bootstrap</a>
+                </p>
+
+                <hr>
+
+                <!-- Date/Time -->
+                <p><span class="glyphicon glyphicon-time"></span> Posted on {{.article.Created}}</p>
+
+                <hr>
+
+                <!-- Post Content -->
+                <p class="lead">{{.article.Body}}</p>
+
+                <hr>
+                <p><a href="/article/{{.article.ID}}/edit">edit this</a></p>
+            </div>
+
+            <!-- Blog Sidebar Widgets Column -->
+            <div class="col-md-4">
+
+                <!-- Blog Search Well -->
+                <div class="well">
+                    <h4>Blog Search</h4>
+                    <div class="input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                        </span>
+                    </div>
+                    <!-- /.input-group -->
+                </div>
+            </div>
+
         </div>
-        <p><a href="/article/{{.article.ID}}/edit">edit this</a></p>
-    </article>
-    <aside>
-        <h2></h2>
-    </aside>
-    {{ template "footer" .}}
+        <!-- /.row -->
+
+        <hr>
+
+        {{ template "footer" .}}
+    </div>
+    <!-- /.container -->
+
 </body>
 </html>

@@ -6,6 +6,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/suzuken/blog-sample/controller"
 	"github.com/suzuken/blog-sample/db"
@@ -123,12 +124,15 @@ func (s *Server) Route() {
 
 func main() {
 	var (
-		addr   = flag.String("addr", ":8080", "addr to bind")
 		dbconf = flag.String("dbconf", "dbconfig.yml", "database configuration file.")
 		env    = flag.String("env", "development", "application envirionment (production, development etc.)")
 	)
 	flag.Parse()
 	b := New()
 	b.Init(*dbconf, *env)
-	b.Run(*addr)
+	port := os.Getenv("PORT")
+	if len(port) == 0 {
+		port = "3000"
+	}
+	b.Run(":" + port)
 }

@@ -20,6 +20,8 @@ A kind of blog.
 
 This app based on [suzuken/wiki](https://github.com/suzuken/wiki).
 
+Template is based on [BlackrockDigital/startbootstrap-blog-post](https://github.com/BlackrockDigital/startbootstrap-blog-post).
+
 ## LICENSE
 
 MIT

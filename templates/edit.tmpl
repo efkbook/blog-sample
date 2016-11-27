@@ -2,27 +2,24 @@
 <html lang="en">
 {{ template "header" . }}
 <body>
-    <header>
-        <h1>Edit Article: go-wiki</h1>
-    </header>
     {{ template "global-navigator" . }}
-    <article>
+    <div class="container">
         <form action="/save" method="POST">
             {{ template "csrf-hidden" . }}
             <input type="hidden" name="id" value="{{.article.ID}}">
-            <input type="text" name="title" value="{{.article.Title}}">
-            <textarea id="" name="body" cols="30" rows="10">{{.article.Body}}</textarea>
-            <input type="submit" value="save">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" name="title" class="form-control" id="title" placeholder="title" value="{{.article.Title}}">
+            </div>
+            <textarea class="form-control" id="" name="body" rows="10">{{.article.Body}}</textarea>
+            <input type="submit" value="save" class="btn btn-default">
         </form>
         <form action="/delete" method="POST">
             {{ template "csrf-hidden" . }}
             <input type="hidden" name="id" value="{{.article.ID}}">
-            <input type="submit" value="delete">
+            <input type="submit" value="delete this article" class="btn">
         </form>
-    </article>
-    <aside>
-        <h2></h2>
-    </aside>
     {{ template "footer" .}}
+    </div>
 </body>
 </html>
