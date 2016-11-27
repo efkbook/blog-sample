@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"strconv"
 
+	"github.com/gin-gonic/contrib/sessions"
 	"github.com/suzuken/blog-sample/model"
 	csrf "github.com/utrack/gin-csrf"
 
@@ -25,7 +26,7 @@ func (t *Article) Root(c *gin.Context) {
 		return
 	}
 	c.HTML(http.StatusOK, "index.tmpl", gin.H{
-		"title":    "wiki wiki",
+		"title":    "blog top",
 		"articles": articles,
 		"context":  c,
 	})
@@ -39,13 +40,13 @@ func (t *Article) Get(c *gin.Context) {
 		c.String(500, "%s", err)
 		return
 	}
-	article, err := model.ArticleOne(t.DB, aid)
+	article, err := model.ArticleUserOne(t.DB, aid)
 	if err != nil {
 		c.String(500, "%s", err)
 		return
 	}
 	c.HTML(http.StatusOK, "article.tmpl", gin.H{
-		"title":   fmt.Sprintf("%s - go-wiki", article.Title),
+		"title":   fmt.Sprintf("%s - go-blog", article.Title),
 		"article": article,
 		"context": c,
 	})
@@ -65,7 +66,7 @@ func (t *Article) Edit(c *gin.Context) {
 		return
 	}
 	c.HTML(http.StatusOK, "edit.tmpl", gin.H{
-		"title":   fmt.Sprintf("%s - go-wiki", article.Title),
+		"title":   fmt.Sprintf("%s - go-blog", article.Title),
 		"article": article,
 		"context": c,
 		"csrf":    csrf.GetToken(c),
@@ -76,6 +77,8 @@ func (t *Article) Edit(c *gin.Context) {
 // If successed, redirect to created one.
 func (t *Article) New(c *gin.Context, m *model.Article) {
 	var id int64
+	sess := sessions.Default(c)
+	m.UserID = sess.Get("uid").(int64)
 	TXHandler(c, t.DB, func(tx *sql.Tx) error {
 		result, err := m.Insert(tx)
 		if err != nil {

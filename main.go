@@ -18,7 +18,7 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
-// Server is whole server implementation for this wiki app.
+// Server is whole server implementation for this blog app.
 // This holds database connection and router settings based on gin.
 type Server struct {
 	db     *sql.DB
@@ -51,7 +51,7 @@ func (s *Server) Init(dbconf, env string) {
 	s.Engine.SetHTMLTemplate(t)
 
 	store := sessions.NewCookieStore([]byte("secretkey"))
-	s.Engine.Use(sessions.Sessions("wikisession", store))
+	s.Engine.Use(sessions.Sessions("blogsession", store))
 	s.Engine.Use(csrf.Middleware(csrf.Options{
 		Secret: "secretkey",
 		ErrorFunc: func(c *gin.Context) {
@@ -74,7 +74,7 @@ func (s *Server) Run(addr ...string) {
 	s.Engine.Run(addr...)
 }
 
-// Route setting router for this wiki.
+// Route setting router for this blog.
 func (s *Server) Route() {
 	article := &controller.Article{DB: s.db}
 	user := &controller.User{DB: s.db}
@@ -87,7 +87,7 @@ func (s *Server) Route() {
 		})
 		auth.GET("/new", func(c *gin.Context) {
 			c.HTML(200, "new.tmpl", gin.H{
-				"title":   "New: go-wiki",
+				"title":   "New: go-blog",
 				"csrf":    csrf.GetToken(c),
 				"context": c,
 			})
@@ -132,7 +132,7 @@ func main() {
 	b.Init(*dbconf, *env)
 	port := os.Getenv("PORT")
 	if len(port) == 0 {
-		port = "3000"
+		port = "8080"
 	}
 	b.Run(":" + port)
 }

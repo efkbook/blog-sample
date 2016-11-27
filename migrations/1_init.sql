@@ -1,8 +1,9 @@
 -- +migrate Up
 create table articles (
     article_id integer not null primary key,
-    title text,
-    body text,
+    title text not null,
+    body text not null,
+    user_id integer not null,
     created timestamp not null,
     updated timestamp
 );

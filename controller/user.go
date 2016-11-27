@@ -73,7 +73,7 @@ func (u *User) Logout(c *gin.Context) {
 
 	// clear cookie
 	http.SetCookie(c.Writer, &http.Cookie{
-		Name:    "wikisession",
+		Name:    "blogsession",
 		Value:   "",
 		Path:    "/",
 		Expires: time.Now().AddDate(0, -1, 0),
