@@ -6,7 +6,7 @@ deps:
 	which scaneo || go get github.com/variadico/scaneo
 
 run:
-	$(DOCKER_COMPOSE) up
+	$(DOCKER_COMPOSE) up -d
 
 logs:
 	$(DOCKER_COMPOSE) logs
