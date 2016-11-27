@@ -1,5 +1,7 @@
 # blog sample
 
+[![Build Status](https://travis-ci.org/suzuken/blog-sample.svg?branch=master)](https://travis-ci.org/suzuken/blog-sample)
+
 A kind of blog.
 
 ## Prerequisite

@@ -1,4 +1,5 @@
 .*
 !.git*
+!.travis.yml
 *.db
 /gin-bin

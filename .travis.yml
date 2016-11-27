@@ -1,0 +1,19 @@
+sudo: required
+
+dist: trusty
+
+services:
+  - docker
+
+language: go
+
+go:
+  - 1.7
+
+before_script:
+  - export PATH=$HOME/gopath/bin:$PATH
+
+install: make deps
+
+script:
+  - make test
