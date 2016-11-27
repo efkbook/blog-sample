@@ -1,0 +1,16 @@
+hash: ed5d68cd9ce0a0ba80dae5ed203fa9a98e474cfd7a035898b8ee18229f193641
+updated: 2016-11-27T18:11:22.622077084+09:00
+imports:
+- name: github.com/gin-gonic/contrib
+  version: cf28f84316e50a05a59d174b37c26ad9a43a1201
+  subpackages:
+  - sessions
+- name: github.com/gin-gonic/gin
+  version: 2dae550eb5392006a4582ce9c90016a9b5a74e8b
+- name: github.com/mattn/go-sqlite3
+  version: ca5e3819723d8eeaf170ad510e7da1d6d2e94a08
+- name: github.com/utrack/gin-csrf
+  version: 63c0ef5eca6cc70a0cd93a8b2ca8a9e2b860d155
+- name: gopkg.in/yaml.v2
+  version: a5b47d31c556af34a302ce5d659e6fea44d90de0
+testImports: []

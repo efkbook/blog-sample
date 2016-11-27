@@ -6,7 +6,7 @@ deps:
 	which scaneo || go get github.com/variadico/scaneo
 
 test:
-	go test -v ./...
+	go test -v $(glide novendor)
 
 run:
 	$(DOCKER_COMPOSE) up -d

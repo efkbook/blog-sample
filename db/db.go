@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	"gopkg.in/yaml.v1"
+	"gopkg.in/yaml.v2"
 )
 
 // Configs have configuration for each environment.

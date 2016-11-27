@@ -13,7 +13,10 @@ go:
 before_script:
   - export PATH=$HOME/gopath/bin:$PATH
 
-install: make deps
+install:
+    - go get -v github.com/Masterminds/glide
+    - cd $GOPATH/src/github.com/Masterminds/glide && git checkout 21ff6d397ccca910873d8eaabab6a941c364cc70 && go install && cd -
+    - glide install
 
 script:
   - make test
