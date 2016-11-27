@@ -25,7 +25,7 @@
                 <hr>
 
                 <!-- Post Content -->
-                <p class="lead">{{.article.Body}}</p>
+                <p class="lead">{{nl2br .article.Body}}</p>
 
                 <hr>
                 <p><a href="/article/{{.article.ID}}/edit">edit this</a></p>

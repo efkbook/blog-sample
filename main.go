@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 
 	"github.com/suzuken/blog-sample/controller"
 	"github.com/suzuken/blog-sample/db"
@@ -47,6 +48,9 @@ func (s *Server) Init(dbconf, env string) {
 	t := template.Must(template.New("").Funcs(template.FuncMap{
 		"LoggedIn":    controller.LoggedIn,
 		"CurrentName": controller.CurrentName,
+		"nl2br": func(text string) template.HTML {
+			return template.HTML(strings.Replace(template.HTMLEscapeString(text), "\n", "<br>", -1))
+		},
 	}).ParseGlob("templates/*"))
 	s.Engine.SetHTMLTemplate(t)
 
