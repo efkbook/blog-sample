@@ -2,9 +2,12 @@ version: "2.0"
 
 services:
   elasticsearch:
-    image: elasticsearch:5.0.1
+    build:
+      context: .
+      dockerfile: Dockerfile-elasticsearch
     ports:
       - 9200:9200
+      - 9300:9300
   kibana:
     image: kibana:5.0.1
     environment:

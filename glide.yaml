@@ -7,3 +7,5 @@ import:
 - package: github.com/utrack/gin-csrf
 - package: gopkg.in/yaml.v2
 - package: github.com/gin-gonic/contrib
+- package: gopkg.in/olivere/elastic.v5
+  version: ^5.0.13

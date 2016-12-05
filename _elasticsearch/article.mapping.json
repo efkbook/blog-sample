@@ -1,0 +1,57 @@
+{
+    "settings": {
+        "number_of_shards" : 5,
+        "number_of_replicas" : 1,
+        "analysis": {
+            "tokenizer": {
+                "ja_tokenizer": {
+                    "type": "kuromoji_tokenizer",
+                    "mode": "search"
+                }
+            },
+            "analyzer": {
+                "ja_analyzer": {
+                    "type": "custom",
+                    "char_filter": [
+                        "html_strip",
+                        "icu_normalizer",
+                        "kuromoji_iteration_mark"
+                    ],
+                    "tokenizer": "ja_tokenizer",
+                    "filter": [
+                        "cjk_width",
+                        "lowercase",
+                        "kuromoji_stemmer",
+                        "kuromoji_part_of_speech"
+                    ]
+                }
+            }
+        }
+    },
+    "mappings": {
+        "article": {
+            "properties": {
+                "article_id": { "type": "integer" },
+                "title" : {
+                    "type": "text", "index" : "analyzed", "analyzer": "ja_analyzer",
+                    "fields": {
+                        "raw": {
+                            "type":"keyword",
+                            "index" : "not_analyzed"
+                        }
+                    }
+                },
+                "body" : {
+                    "type": "text", "index" : "analyzed", "analyzer": "ja_analyzer",
+                    "fields": {
+                        "raw": {
+                            "type":"keyword",
+                            "index" : "not_analyzed"
+                        }
+                    }
+                },
+                "user_id": { "type": "integer" }
+            }
+        }
+    }
+}

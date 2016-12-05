@@ -1,46 +1,48 @@
-hash: 5b580d66126d3d69ca60c2f8b6e0e5ef651301c78325ebf1cbe298e1d63b8831
-updated: 2016-11-27T18:29:07.1401644+09:00
+hash: a90192e20e26131d1e8fc118e6a4750e566832426645b41f4ad689e10d68235d
+updated: 2016-12-05T22:27:51.642219428+09:00
 imports:
 - name: github.com/boj/redistore
-  version: fc113767cd6b051980f260d6dbe84b2740c46ab0
+  version: 88b30050c33a9f81e6a1993be075d70a11a2fed3
 - name: github.com/dchest/uniuri
-  version: 8902c56451e9b58ff940bbe5fec35d5f9c04584a
+  version: 88b30050c33a9f81e6a1993be075d70a11a2fed3
 - name: github.com/garyburd/redigo
-  version: d7de57ceb51b029d5c5a61e26587f672e2834178
+  version: 88b30050c33a9f81e6a1993be075d70a11a2fed3
   subpackages:
-  - internal
   - redis
+  - internal
 - name: github.com/gin-gonic/contrib
-  version: cf28f84316e50a05a59d174b37c26ad9a43a1201
+  version: 88b30050c33a9f81e6a1993be075d70a11a2fed3
   subpackages:
   - sessions
 - name: github.com/gin-gonic/gin
-  version: 2dae550eb5392006a4582ce9c90016a9b5a74e8b
+  version: ""
   subpackages:
   - binding
   - render
 - name: github.com/golang/protobuf
-  version: 2402d76f3d41f928c7902a765dfc872356dd3aad
+  version: ""
   subpackages:
   - proto
 - name: github.com/gorilla/context
-  version: 08b5f424b9271eedf6f9f0ce86cb9396ed337a42
+  version: 88b30050c33a9f81e6a1993be075d70a11a2fed3
 - name: github.com/gorilla/securecookie
-  version: fa5329f913702981df43dcb2a380bac429c810b5
+  version: 88b30050c33a9f81e6a1993be075d70a11a2fed3
 - name: github.com/gorilla/sessions
-  version: ca9ada44574153444b00d3fd9c8559e4cc95f896
+  version: 88b30050c33a9f81e6a1993be075d70a11a2fed3
 - name: github.com/manucorporat/sse
-  version: ee05b128a739a0fb76c7ebd3ae4810c1de808d6d
+  version: ""
 - name: github.com/mattn/go-sqlite3
-  version: ca5e3819723d8eeaf170ad510e7da1d6d2e94a08
+  version: ""
 - name: github.com/utrack/gin-csrf
-  version: 63c0ef5eca6cc70a0cd93a8b2ca8a9e2b860d155
+  version: 88b30050c33a9f81e6a1993be075d70a11a2fed3
 - name: golang.org/x/net
-  version: f315505cf3349909cdf013ea56690da34e96a451
+  version: ""
   subpackages:
   - context
 - name: gopkg.in/go-playground/validator.v8
-  version: c193cecd124b5cc722d7ee5538e945bdb3348435
+  version: ""
+- name: gopkg.in/olivere/elastic.v5
+  version: b272fab42387a42585235d56f8c6b53b13ddfb7d
 - name: gopkg.in/yaml.v2
-  version: a5b47d31c556af34a302ce5d659e6fea44d90de0
+  version: 88b30050c33a9f81e6a1993be075d70a11a2fed3
 testImports: []

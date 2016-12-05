@@ -1,0 +1,35 @@
+{
+    "template": "search*",
+    "settings": {
+        "number_of_shards" : 5,
+        "number_of_replicas" : 1
+    },
+    "mappings": {
+        "_default_": {
+            "dynamic_templates": [
+                {
+                    "keyword_template" : {
+                        "match" : "*",
+                        "mapping": { "type": "keyword", "index": "not_analyzed" },
+                        "match_mapping_type" : "keyword"
+                    }
+                }
+            ],
+            "properties" : {
+                "query" : {
+                    "type": "text", "index" : "analyzed", "analyzer": "whitespace",
+                    "fields": {
+                        "raw": {
+                            "type":"keyword",
+                            "index" : "not_analyzed"
+                        }
+                    }
+                },
+                "user_id" : { "type": "integer" },
+                "category" : { "type":"integer" },
+                "url" : { "type":"keyword", "index": "not_analyzed" },
+                "@timestamp" : { "type" : "date", "index" : "not_analyzed" }
+            }
+        }
+    }
+}
