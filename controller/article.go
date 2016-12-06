@@ -3,19 +3,26 @@ package controller
 import (
 	"database/sql"
 	"fmt"
+	"log"
 	"net/http"
+	"reflect"
 	"strconv"
+	"time"
+
+	"golang.org/x/net/context"
 
 	"github.com/gin-gonic/contrib/sessions"
 	"github.com/efkbook/blog-sample/model"
 	csrf "github.com/utrack/gin-csrf"
 
 	"github.com/gin-gonic/gin"
+	elastic "gopkg.in/olivere/elastic.v5"
 )
 
 // Article is controller for requests to articles.
 type Article struct {
 	DB *sql.DB
+	ES *elastic.Client
 }
 
 // Root indicates / path as top page.
@@ -88,8 +95,20 @@ func (t *Article) New(c *gin.Context, m *model.Article) {
 			return err
 		}
 		id, err = result.LastInsertId()
+
+		// It's pseudo way to insert timestamp.
+		now := time.Now()
+		m.Created = now
+		m.Updated = now
+		m.ID = id
+		_, err = t.ES.Index().Index("article").Type("article").Id(strconv.FormatInt(id, 10)).BodyJson(m).Refresh("").Do(context.Background())
+		if err != nil {
+			// skip document indexing error. You should care about it when it's necessary.
+			log.Printf("elasticsearch: insert document failed: %s", err)
+		}
 		return err
 	})
+
 	c.Redirect(301, fmt.Sprintf("/article/%d", id))
 }
 
@@ -102,6 +121,7 @@ func (t *Article) Update(c *gin.Context, m *model.Article) {
 		}
 		return tx.Commit()
 	})
+	// TODO update document in elasticsearch
 	c.Redirect(301, fmt.Sprintf("/article/%d", m.ID))
 }
 
@@ -148,6 +168,33 @@ func (t *Article) Delete(c *gin.Context) {
 		}
 		return tx.Commit()
 	})
+	// TODO delete document in elasticsearch
 
 	c.Redirect(301, "/")
+}
+
+// TODO search document by elasticsearch
+func (t *Article) Search(c *gin.Context) {
+	queryString := c.Query("q")
+	query := elastic.NewQueryStringQuery(queryString).DefaultField("body")
+	result, err := t.ES.Search().Index("article").Query(query).Sort("created", false).Do(context.Background())
+	if err != nil {
+		c.String(500, "%s", err)
+		return
+	}
+
+	var ar model.Article
+	articles := make([]model.Article, 0)
+	for _, item := range result.Each(reflect.TypeOf(ar)) {
+		if t, ok := item.(model.Article); ok {
+			articles = append(articles, t)
+		}
+	}
+	total := result.Hits.TotalHits
+	c.HTML(http.StatusOK, "search.tmpl", gin.H{
+		"title":    "blog search result",
+		"articles": articles,
+		"total":    total,
+		"context":  c,
+	})
 }

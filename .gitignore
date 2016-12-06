@@ -3,3 +3,4 @@
 !.travis.yml
 *.db
 /gin-bin
+/Godeps/_workspace

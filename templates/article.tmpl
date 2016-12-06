@@ -38,12 +38,14 @@
                 <div class="well">
                     <h4>Blog Search</h4>
                     <div class="input-group">
-                        <input type="text" class="form-control">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
+                        <form action="/search">
+                            <input type="text" name="q" class="form-control">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">
                                 <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                        </span>
+                                </button>
+                            </span>
+                        </form>
                     </div>
                     <!-- /.input-group -->
                 </div>
