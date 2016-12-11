@@ -1,6 +1,6 @@
 # blog sample
 
-[![Build Status](https://travis-ci.org/suzuken/blog-sample.svg?branch=master)](https://travis-ci.org/suzuken/blog-sample)
+[![Build Status](https://travis-ci.org/efkbook/blog-sample.svg?branch=master)](https://travis-ci.org/efkbook/blog-sample)
 
 A kind of blog for presentating ELK stack features.
 
