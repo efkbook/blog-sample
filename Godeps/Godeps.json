@@ -13,6 +13,11 @@
 			"Rev": "8902c56451e9b58ff940bbe5fec35d5f9c04584a"
 		},
 		{
+			"ImportPath": "github.com/fluent/fluent-logger-golang/fluent",
+			"Comment": "v1.2.1",
+			"Rev": "28bdb662295c1b7aca09c1a4edbf9430010775a9"
+		},
+		{
 			"ImportPath": "github.com/garyburd/redigo/internal",
 			"Rev": "8873b2f1995f59d4bcdd2b0dc9858e2cb9bf0c13"
 		},
@@ -65,6 +70,15 @@
 			"ImportPath": "github.com/mattn/go-sqlite3",
 			"Comment": "v1.1.0-49-g76e335f",
 			"Rev": "76e335f60bbcee20755df9864f0153af1a80ad2d"
+		},
+		{
+			"ImportPath": "github.com/philhofer/fwd",
+			"Rev": "98c11a7a6ec829d672b03833c3d69a7fae1ca972"
+		},
+		{
+			"ImportPath": "github.com/tinylib/msgp/msgp",
+			"Comment": "v1.0-beta-12-gad0ff2e",
+			"Rev": "ad0ff2e232ad2e37faf67087fb24bf8d04a8ce20"
 		},
 		{
 			"ImportPath": "github.com/utrack/gin-csrf",

@@ -35,6 +35,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-fluentd
+    volumes:
+      - ./_fluentd/etc:/fluentd/etc
+    environment:
+      - FLUENTD_CONF=fluent.conf
     ports:
       - 24224:24224
 
