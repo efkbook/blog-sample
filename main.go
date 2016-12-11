@@ -14,6 +14,7 @@ import (
 
 	csrf "github.com/utrack/gin-csrf"
 
+	"github.com/fluent/fluent-logger-golang/fluent"
 	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"
 	_ "github.com/mattn/go-sqlite3"
@@ -26,6 +27,7 @@ type Server struct {
 	db     *sql.DB
 	Engine *gin.Engine
 	es     *elastic.Client
+	fluent *fluent.Fluent
 }
 
 // Close makes the database connection to close.
@@ -54,6 +56,12 @@ func (s *Server) Init(dbconf, env string) {
 		log.Fatalf("initialize Elasticsearch client failed: %s", err)
 	}
 	s.es = client
+
+	logger, err := fluent.New(fluent.Config{})
+	if err != nil {
+		log.Fatalf("initialize fluentd client failed: %s", err)
+	}
+	s.fluent = logger
 
 	// NOTE: define helper func to use from templates here.
 	t := template.Must(template.New("").Funcs(template.FuncMap{
@@ -91,7 +99,7 @@ func (s *Server) Run(addr ...string) {
 
 // Route setting router for this blog.
 func (s *Server) Route() {
-	article := &controller.Article{DB: s.db, ES: s.es}
+	article := &controller.Article{DB: s.db, ES: s.es, Fluent: s.fluent}
 	user := &controller.User{DB: s.db}
 
 	auth := s.Engine.Group("/")

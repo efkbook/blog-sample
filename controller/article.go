@@ -11,18 +11,19 @@ import (
 
 	"golang.org/x/net/context"
 
-	"github.com/gin-gonic/contrib/sessions"
 	"github.com/efkbook/blog-sample/model"
-	csrf "github.com/utrack/gin-csrf"
-
+	"github.com/fluent/fluent-logger-golang/fluent"
+	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"
+	csrf "github.com/utrack/gin-csrf"
 	elastic "gopkg.in/olivere/elastic.v5"
 )
 
 // Article is controller for requests to articles.
 type Article struct {
-	DB *sql.DB
-	ES *elastic.Client
+	DB     *sql.DB
+	ES     *elastic.Client
+	Fluent *fluent.Fluent
 }
 
 // Root indicates / path as top page.
@@ -173,9 +174,25 @@ func (t *Article) Delete(c *gin.Context) {
 	c.Redirect(301, "/")
 }
 
+type SearchLog struct {
+	Query  string `msg:"query"`
+	UserID int64  `msg:"user_id"`
+}
+
 // TODO search document by elasticsearch
 func (t *Article) Search(c *gin.Context) {
 	queryString := c.Query("q")
+
+	sess := sessions.Default(c)
+	searchLog := SearchLog{Query: queryString}
+	if uid, ok := sess.Get("uid").(int64); ok {
+		searchLog.UserID = uid
+	}
+	if err := t.Fluent.Post("blog.search", searchLog); err != nil {
+		// NOTE: if posting search log to fluentd failed, not panic.
+		log.Printf("post to fluentd failed.: %s", err)
+	}
+
 	query := elastic.NewQueryStringQuery(queryString).DefaultField("body")
 	result, err := t.ES.Search().Index("article").Query(query).Sort("created", false).Do(context.Background())
 	if err != nil {
