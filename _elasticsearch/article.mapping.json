@@ -31,7 +31,6 @@
     "mappings": {
         "article": {
             "properties": {
-                "article_id": { "type": "integer" },
                 "title" : {
                     "type": "text", "index" : "analyzed", "analyzer": "ja_analyzer",
                     "fields": {
@@ -50,7 +49,9 @@
                         }
                     }
                 },
-                "user_id": { "type": "integer" }
+                "user_id": { "type": "integer" },
+                "created": { "type": "date" },
+                "updated": { "type": "date" }
             }
         }
     }

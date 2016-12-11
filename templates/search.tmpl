@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+{{ template "header" . }}
+<body>
+    {{ template "global-navigator" . }}
+    <div class="container">
+        <h2>search result</h2>
+        <p>hits: {{.total}} article </p>
+        <ul>
+        {{range .articles}}
+            <li>
+                <a href="/article/{{.ID}}">{{ .Title }}</a> posted on {{ .Created }}
+            </li>
+        {{end}}
+        </ul>
+    {{ template "footer" .}}
+    </div>
+</body>
+</html>

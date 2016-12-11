@@ -1,0 +1,106 @@
+{
+	"ImportPath": "github.com/efkbook/blog-sample",
+	"GoVersion": "go1.8",
+	"GodepVersion": "v75",
+	"Deps": [
+		{
+			"ImportPath": "github.com/boj/redistore",
+			"Comment": "v1.2",
+			"Rev": "fc113767cd6b051980f260d6dbe84b2740c46ab0"
+		},
+		{
+			"ImportPath": "github.com/dchest/uniuri",
+			"Rev": "8902c56451e9b58ff940bbe5fec35d5f9c04584a"
+		},
+		{
+			"ImportPath": "github.com/garyburd/redigo/internal",
+			"Rev": "8873b2f1995f59d4bcdd2b0dc9858e2cb9bf0c13"
+		},
+		{
+			"ImportPath": "github.com/garyburd/redigo/redis",
+			"Rev": "8873b2f1995f59d4bcdd2b0dc9858e2cb9bf0c13"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/contrib/sessions",
+			"Rev": "547e518040cfb96576b507d2f26779ab9c6fc829"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin",
+			"Comment": "v1.0rc1-260-g3c3526f",
+			"Rev": "3c3526f1f1935955a3e54fd2c0d8468802ee502e"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin/binding",
+			"Comment": "v1.0rc1-260-g3c3526f",
+			"Rev": "3c3526f1f1935955a3e54fd2c0d8468802ee502e"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin/render",
+			"Comment": "v1.0rc1-260-g3c3526f",
+			"Rev": "3c3526f1f1935955a3e54fd2c0d8468802ee502e"
+		},
+		{
+			"ImportPath": "github.com/golang/protobuf/proto",
+			"Rev": "0fd8c908d872c921af513ef5091964bbd2e0d904"
+		},
+		{
+			"ImportPath": "github.com/gorilla/context",
+			"Comment": "v1.1-4-gaed02d1",
+			"Rev": "aed02d124ae4a0e94fea4541c8effd05bf0c8296"
+		},
+		{
+			"ImportPath": "github.com/gorilla/securecookie",
+			"Comment": "v1.1-2-gff35634",
+			"Rev": "ff356348f74133a59d3e93aa24b5b4551b6fe90d"
+		},
+		{
+			"ImportPath": "github.com/gorilla/sessions",
+			"Rev": "56ba4b0a11da87516629a57408a5f7e4c8ea7b0b"
+		},
+		{
+			"ImportPath": "github.com/manucorporat/sse",
+			"Rev": "ee05b128a739a0fb76c7ebd3ae4810c1de808d6d"
+		},
+		{
+			"ImportPath": "github.com/mattn/go-sqlite3",
+			"Comment": "v1.1.0-49-g76e335f",
+			"Rev": "76e335f60bbcee20755df9864f0153af1a80ad2d"
+		},
+		{
+			"ImportPath": "github.com/utrack/gin-csrf",
+			"Rev": "63c0ef5eca6cc70a0cd93a8b2ca8a9e2b860d155"
+		},
+		{
+			"ImportPath": "golang.org/x/net/context",
+			"Rev": "c764672d0ee39ffd83cfcb375804d3181302b62b"
+		},
+		{
+			"ImportPath": "golang.org/x/net/context/ctxhttp",
+			"Rev": "c764672d0ee39ffd83cfcb375804d3181302b62b"
+		},
+		{
+			"ImportPath": "gopkg.in/go-playground/validator.v8",
+			"Comment": "v8.17.1",
+			"Rev": "014792cf3e266caff1e916876be12282b33059e0"
+		},
+		{
+			"ImportPath": "gopkg.in/olivere/elastic.v5",
+			"Comment": "v5.0.13",
+			"Rev": "b272fab42387a42585235d56f8c6b53b13ddfb7d"
+		},
+		{
+			"ImportPath": "gopkg.in/olivere/elastic.v5/backoff",
+			"Comment": "v5.0.13",
+			"Rev": "b272fab42387a42585235d56f8c6b53b13ddfb7d"
+		},
+		{
+			"ImportPath": "gopkg.in/olivere/elastic.v5/uritemplates",
+			"Comment": "v5.0.13",
+			"Rev": "b272fab42387a42585235d56f8c6b53b13ddfb7d"
+		},
+		{
+			"ImportPath": "gopkg.in/yaml.v2",
+			"Rev": "53feefa2559fb8dfa8d81baad31be332c97d6c77"
+		}
+	]
+}

@@ -5,9 +5,10 @@ ESHOST:=http://localhost:9200
 deps:
 	which sql-migrate || go get github.com/rubenv/sql-migrate/...
 	which scaneo || go get github.com/variadico/scaneo
+	which godep || go get github.com/tools/godep
 
 test:
-	go test -v $(shell glide novendor)
+	go test -v ./...
 
 run:
 	$(DOCKER_COMPOSE) up -d

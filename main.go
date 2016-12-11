@@ -17,6 +17,7 @@ import (
 	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"
 	_ "github.com/mattn/go-sqlite3"
+	elastic "gopkg.in/olivere/elastic.v5"
 )
 
 // Server is whole server implementation for this blog app.
@@ -24,6 +25,7 @@ import (
 type Server struct {
 	db     *sql.DB
 	Engine *gin.Engine
+	es     *elastic.Client
 }
 
 // Close makes the database connection to close.
@@ -43,6 +45,15 @@ func (s *Server) Init(dbconf, env string) {
 		log.Fatalf("db initialization failed: %s", err)
 	}
 	s.db = db
+
+	client, err := elastic.NewClient(
+		elastic.SetURL("http://localhost:9200"),
+		elastic.SetMaxRetries(5),
+		elastic.SetSniff(false))
+	if err != nil {
+		log.Fatalf("initialize Elasticsearch client failed: %s", err)
+	}
+	s.es = client
 
 	// NOTE: define helper func to use from templates here.
 	t := template.Must(template.New("").Funcs(template.FuncMap{
@@ -80,7 +91,7 @@ func (s *Server) Run(addr ...string) {
 
 // Route setting router for this blog.
 func (s *Server) Route() {
-	article := &controller.Article{DB: s.db}
+	article := &controller.Article{DB: s.db, ES: s.es}
 	user := &controller.User{DB: s.db}
 
 	auth := s.Engine.Group("/")
@@ -109,6 +120,7 @@ func (s *Server) Route() {
 	}
 
 	s.Engine.GET("/", article.Root)
+	s.Engine.GET("/search", article.Search)
 	s.Engine.GET("/article/:id", article.Get)
 	s.Engine.GET("/signup", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "signup.tmpl", gin.H{
