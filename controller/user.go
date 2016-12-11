@@ -8,7 +8,7 @@ import (
 
 	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"
-	"github.com/suzuken/blog-sample/model"
+	"github.com/efkbook/blog-sample/model"
 )
 
 // User is controller for requests to user.

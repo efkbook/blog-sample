@@ -1,4 +1,4 @@
-package: github.com/suzuken/blog-sample
+package: github.com/efkbook/blog-sample
 import:
 - package: github.com/gin-gonic/gin
   version: ^1.0.0
