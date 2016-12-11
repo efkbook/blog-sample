@@ -9,8 +9,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/suzuken/blog-sample/controller"
-	"github.com/suzuken/blog-sample/db"
+	"github.com/efkbook/blog-sample/controller"
+	"github.com/efkbook/blog-sample/db"
 
 	csrf "github.com/utrack/gin-csrf"
 

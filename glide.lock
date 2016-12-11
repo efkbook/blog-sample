@@ -1,17 +1,17 @@
-hash: a90192e20e26131d1e8fc118e6a4750e566832426645b41f4ad689e10d68235d
-updated: 2016-12-05T22:27:51.642219428+09:00
+hash: 452f212d23d184cd1c9144db59b4e59592c00e8cd7682e462c83825f6a7945b6
+updated: 2016-12-11T11:12:04.949688311+09:00
 imports:
 - name: github.com/boj/redistore
-  version: 88b30050c33a9f81e6a1993be075d70a11a2fed3
+  version: 7ea5c6112139bd844716c5958d1a389366a246f9
 - name: github.com/dchest/uniuri
-  version: 88b30050c33a9f81e6a1993be075d70a11a2fed3
+  version: 7ea5c6112139bd844716c5958d1a389366a246f9
 - name: github.com/garyburd/redigo
-  version: 88b30050c33a9f81e6a1993be075d70a11a2fed3
+  version: 7ea5c6112139bd844716c5958d1a389366a246f9
   subpackages:
   - redis
   - internal
 - name: github.com/gin-gonic/contrib
-  version: 88b30050c33a9f81e6a1993be075d70a11a2fed3
+  version: 7ea5c6112139bd844716c5958d1a389366a246f9
   subpackages:
   - sessions
 - name: github.com/gin-gonic/gin
@@ -24,25 +24,23 @@ imports:
   subpackages:
   - proto
 - name: github.com/gorilla/context
-  version: 88b30050c33a9f81e6a1993be075d70a11a2fed3
+  version: 7ea5c6112139bd844716c5958d1a389366a246f9
 - name: github.com/gorilla/securecookie
-  version: 88b30050c33a9f81e6a1993be075d70a11a2fed3
+  version: 7ea5c6112139bd844716c5958d1a389366a246f9
 - name: github.com/gorilla/sessions
-  version: 88b30050c33a9f81e6a1993be075d70a11a2fed3
+  version: 7ea5c6112139bd844716c5958d1a389366a246f9
 - name: github.com/manucorporat/sse
   version: ""
 - name: github.com/mattn/go-sqlite3
   version: ""
 - name: github.com/utrack/gin-csrf
-  version: 88b30050c33a9f81e6a1993be075d70a11a2fed3
+  version: 7ea5c6112139bd844716c5958d1a389366a246f9
 - name: golang.org/x/net
   version: ""
   subpackages:
   - context
 - name: gopkg.in/go-playground/validator.v8
   version: ""
-- name: gopkg.in/olivere/elastic.v5
-  version: b272fab42387a42585235d56f8c6b53b13ddfb7d
 - name: gopkg.in/yaml.v2
-  version: 88b30050c33a9f81e6a1993be075d70a11a2fed3
+  version: 7ea5c6112139bd844716c5958d1a389366a246f9
 testImports: []

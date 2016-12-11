@@ -7,7 +7,7 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/contrib/sessions"
-	"github.com/suzuken/blog-sample/model"
+	"github.com/efkbook/blog-sample/model"
 	csrf "github.com/utrack/gin-csrf"
 
 	"github.com/gin-gonic/gin"
