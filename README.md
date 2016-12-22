@@ -26,9 +26,22 @@ This repository includes following.
 
     make deps
 
-## How to run
+## Using Docker: make run
 
+If you using docker, it's easy to work with Elastic stack and fluentd!
+
+    # running docker containers by docker-compose
     make run
+
+At the first time, `docker-compose` start creating containers. After starting containers, it's time to access Elasticsearch. Cnfirmed by `curl`.
+
+    curl http://localhost:9200
+
+It works! And your Kibana console is also available on `http://localhost:5601`. If Elasticsearch is accecible, blog application can start up. To start a blog application,
+
+    go run main.go
+
+or, use `go build -o blog && ./blog`. Of course, `go get github.com/efkbook/blog-sample && blog-sample` is working as intented.
 
 ## Acknowledgement
 
