@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/efkbook/blog-sample.svg?branch=master)](https://travis-ci.org/efkbook/blog-sample)
 
-A kind of blog for presentating ELK stack features.
+A kind of blog for presentating EFK stack features.
 
 * Write, view and search blog posts.
 * Sing up, Login. Session is based on cookie.
