@@ -37,7 +37,7 @@ func (s *Server) Close() error {
 
 // Init initialize server state. Connecting to database, compiling templates,
 // and settings router.
-func (s *Server) Init(dbconf, env string) {
+func (s *Server) Init(dbconf, env, esurl, fluentHost string) {
 	cs, err := db.NewConfigsFromFile(dbconf)
 	if err != nil {
 		log.Fatalf("cannot open database configuration. exit. %s", err)
@@ -49,7 +49,7 @@ func (s *Server) Init(dbconf, env string) {
 	s.db = db
 
 	client, err := elastic.NewClient(
-		elastic.SetURL("http://localhost:9200"),
+		elastic.SetURL(esurl),
 		elastic.SetMaxRetries(5),
 		elastic.SetSniff(false))
 	if err != nil {
@@ -57,7 +57,9 @@ func (s *Server) Init(dbconf, env string) {
 	}
 	s.es = client
 
-	logger, err := fluent.New(fluent.Config{})
+	logger, err := fluent.New(fluent.Config{
+		FluentHost: fluentHost,
+	})
 	if err != nil {
 		log.Fatalf("initialize fluentd client failed: %s", err)
 	}
@@ -148,12 +150,14 @@ func (s *Server) Route() {
 
 func main() {
 	var (
-		dbconf = flag.String("dbconf", "dbconfig.yml", "database configuration file.")
-		env    = flag.String("env", "development", "application envirionment (production, development etc.)")
+		dbconf     = flag.String("dbconf", "dbconfig.yml", "database configuration file.")
+		env        = flag.String("env", "development", "application envirionment (production, development etc.)")
+		esurl      = flag.String("esurl", "http://elasticsearch:9200", "Elasticsearch node URL")
+		fluentHost = flag.String("fluenthost", "fluentd", "Elasticsearch node URL")
 	)
 	flag.Parse()
 	b := New()
-	b.Init(*dbconf, *env)
+	b.Init(*dbconf, *env, *esurl, *fluentHost)
 	port := os.Getenv("PORT")
 	if len(port) == 0 {
 		port = "8080"

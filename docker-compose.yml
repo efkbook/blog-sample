@@ -37,11 +37,25 @@ services:
       dockerfile: Dockerfile-fluentd
     volumes:
       - ./_fluentd/etc:/fluentd/etc
+      - nginxlog:/var/log/nginx:ro
     environment:
       - FLUENTD_CONF=fluent.conf
+  nginx:
+    image: nginx:1.11
+    volumes:
+      - ./_nginx/etc/nginx.conf:/etc/nginx/nginx.conf:ro
+      - nginxlog:/var/log/nginx
     ports:
-      - 24224:24224
+      - 80:80
+  go:
+    build: .
+    volumes:
+      - .:/go/src/github.com/efkbook/blog-sample
+    ports:
+      - 8080:8080
 
 volumes:
   esdata:
+    driver: local
+  nginxlog:
     driver: local
