@@ -32,9 +32,22 @@ If you using docker, it's easy to work with Elastic stack and fluentd!
     # running docker containers by `docker-compose up -d`
     make run
 
-At the first time, `docker-compose` start creating containers. After starting containers, it's time to access Elasticsearch. Cnfirmed by `curl`.
+At the first time, `docker-compose` start creating containers. After starting containers, it's time to access Elasticsearch.
 
-    curl http://localhost:9200
+    $ curl http://localhost:9200
+    {
+      "name" : "Bsqcs2j",
+      "cluster_name" : "docker-cluster",
+      "cluster_uuid" : "GTl5P_j6TNGKcrN4kVipew",
+      "version" : {
+        "number" : "5.1.1",
+        "build_hash" : "5395e21",
+        "build_date" : "2016-12-06T12:36:15.409Z",
+        "build_snapshot" : false,
+        "lucene_version" : "6.3.0"
+      },
+      "tagline" : "You Know, for Search"
+    }
 
 It works! And your Kibana console is also available on `http://localhost:5601`. If Elasticsearch is accecible, blog application can start up.
 
