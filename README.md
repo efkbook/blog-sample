@@ -19,29 +19,36 @@ This repository includes following.
 ## Prerequisite
 
 * Docker
-* Go (>= 1.7)
+
+For local development,
+
+* Go (>= 1.8)
 * sqlite3
-
-## Bootstrap
-
-    make deps
 
 ## Using Docker: make run
 
 If you using docker, it's easy to work with Elastic stack and fluentd!
 
-    # running docker containers by docker-compose
+    # running docker containers by `docker-compose up -d`
     make run
 
 At the first time, `docker-compose` start creating containers. After starting containers, it's time to access Elasticsearch. Cnfirmed by `curl`.
 
     curl http://localhost:9200
 
-It works! And your Kibana console is also available on `http://localhost:5601`. If Elasticsearch is accecible, blog application can start up. To start a blog application,
+It works! And your Kibana console is also available on `http://localhost:5601`. If Elasticsearch is accecible, blog application can start up.
+
+## For contributor
+
+At first, you should install dependencies to development.
+
+    make deps
+
+To start a blog application locally, you just `go run`
 
     go run main.go
 
-or, use `go build -o blog && ./blog`. Of course, `go get github.com/efkbook/blog-sample && blog-sample` is working as intented.
+To add some external packages, use `godep`. If you want to use Elasticsearch and/or Fluentd on docker container, you can specify each host via flag. When blog app running on container, Elasticsearch and Fluentd are accessed by using docker links.
 
 ## Acknowledgement
 
