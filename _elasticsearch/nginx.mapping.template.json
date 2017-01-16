@@ -1,0 +1,17 @@
+{
+    "template": "nginx*",
+    "settings": {
+        "number_of_shards" : 5,
+        "number_of_replicas" : 1
+    },
+    "mappings": {
+        "_default_": {
+            "properties" : {
+                "remote" : { "type": "ip" },
+                "code" : { "type":"integer" },
+                "size" : { "type":"integer" },
+                "@timestamp" : { "type" : "date", "index" : "not_analyzed" }
+            }
+        }
+    }
+}

@@ -26,5 +26,5 @@ elasticsearch/mapping:
 	curl -XPUT "$(ESHOST)/article" -d @_elasticsearch/article.mapping.json
 
 elasticsearch/template:
-	curl -XPUT "$(ESHOST)/_template/view_logs_template" -d @_elasticsearch/logs.mapping.template.json
+	curl -XPUT "$(ESHOST)/_template/nginx_logs_template" -d @_elasticsearch/nginx.mapping.template.json
 	curl -XPUT "$(ESHOST)/_template/search_logs_template" -d @_elasticsearch/search.mapping.template.json
