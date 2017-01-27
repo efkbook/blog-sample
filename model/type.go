@@ -1,4 +1,4 @@
-//go:generate scaneo $GOFILE
+//go:generate $GOPATH/bin/scaneo -o type_scans.go $GOFILE
 
 package model
 
