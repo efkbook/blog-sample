@@ -53,10 +53,6 @@ It works! And your Kibana console is also available on `http://localhost:5601`. 
 
 ## For contributor
 
-At first, you should install dependencies to development.
-
-    make deps
-
 To start a blog application locally, you just `go run`
 
     go run main.go
