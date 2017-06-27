@@ -1,4 +1,4 @@
-version: "2.0"
+version: '3'
 
 services:
   elasticsearch:
@@ -18,7 +18,10 @@ services:
       nofile:
         soft: 65536
         hard: 65536
-    mem_limit: 1g
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
     cap_add:
       - IPC_LOCK
     volumes:
@@ -26,7 +29,7 @@ services:
     ports:
       - 9200:9200
   kibana:
-    image: docker.elastic.co/kibana/kibana:5.1.1
+    image: docker.elastic.co/kibana/kibana:5.4.1
     environment:
       - ELASTICSEARCH_URL=http://elasticsearch:9200
     ports:
