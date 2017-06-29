@@ -1,14 +1,11 @@
-FROM fluent/fluentd:v0.14-latest
-WORKDIR /home/fluent
-ENV PATH /home/fluent/.gem/ruby/2.3.0/bin:$PATH
+FROM debian:jessie
 
-USER root
-RUN apk --no-cache --update add sudo build-base ruby-dev && \
-    sudo -u fluent gem install fluent-plugin-elasticsearch fluent-plugin-record-reformer && \
-    rm -rf /home/fluent/.gem/ruby/2.3.0/cache/*.gem && sudo -u fluent gem sources -c && \
-    apk del sudo build-base ruby-dev && rm -rf /var/cache/apk/*
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get -qq update && apt-get install --no-install-recommends -y curl ca-certificates sudo 
+RUN curl -L https://toolbelt.treasuredata.com/sh/install-debian-jessie-td-agent2.sh | sh
+RUN /usr/sbin/td-agent-gem install fluent-plugin-elasticsearch fluent-plugin-record-reformer
 
 EXPOSE 24224
 
-USER fluent
-CMD exec fluentd -c /fluentd/etc/$FLUENTD_CONF -p /fluentd/plugins $FLUENTD_OPT
+CMD exec td-agent -c /fluentd/etc/$FLUENTD_CONF -p /fluentd/plugins $FLUENTD_OPT

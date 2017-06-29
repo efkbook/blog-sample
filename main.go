@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/efkbook/blog-sample/controller"
 	"github.com/efkbook/blog-sample/db"
@@ -57,13 +58,18 @@ func (s *Server) Init(dbconf, env, esurl, fluentHost string) {
 	}
 	s.es = client
 
-	logger, err := fluent.New(fluent.Config{
-		FluentHost: fluentHost,
-	})
-	if err != nil {
-		log.Fatalf("initialize fluentd client failed: %s", err)
+	for {
+		logger, err := fluent.New(fluent.Config{
+			FluentHost: fluentHost,
+		})
+		if err != nil {
+			log.Printf("initialize fluentd client failed: %s", err)
+			time.Sleep(time.Second)
+			continue
+		}
+		s.fluent = logger
+		break
 	}
-	s.fluent = logger
 
 	// NOTE: define helper func to use from templates here.
 	t := template.Must(template.New("").Funcs(template.FuncMap{
