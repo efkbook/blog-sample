@@ -41,6 +41,8 @@ services:
       - nginxlog:/var/log/nginx:ro
     environment:
       - FLUENTD_CONF=fluent.conf
+    ports:
+      - 24224:24224
   nginx:
     image: nginx:1.11
     volumes:
