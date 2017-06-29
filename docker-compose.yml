@@ -26,9 +26,10 @@ services:
     ports:
       - 9200:9200
   kibana:
-    image: docker.elastic.co/kibana/kibana:5.1.1
+    image: docker.elastic.co/kibana/kibana:5.4.3
     environment:
       - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - XPACK_SECURITY_ENABLED=false
     ports:
       - 5601:5601
   fluentd:
