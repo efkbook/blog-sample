@@ -11,7 +11,7 @@ A kind of blog for presentating EFK stack features.
 
 This repository includes following.
 
-* [fluent/fluentd](https://github.com/fluent/fluentd) v0.14 latest
+* [fluent/fluentd](https://github.com/fluent/fluentd) v0.12 latest
 * [uken/fluent-plugin-elasticsearch](https://github.com/uken/fluent-plugin-elasticsearch)
 * Elastic v5 (Elasticsearch and Kibana)
 * Simple blog application based on [suzuken/wiki](https://github.com/suzuken/wiki) written in Go.
@@ -36,15 +36,15 @@ At the first time, `docker-compose` start creating containers. After starting co
 
     $ curl http://localhost:9200
     {
-      "name" : "Bsqcs2j",
+      "name" : "o2r0AqN",
       "cluster_name" : "docker-cluster",
-      "cluster_uuid" : "GTl5P_j6TNGKcrN4kVipew",
+      "cluster_uuid" : "KoAk04RXRbSx3wgLiB_LtA",
       "version" : {
-        "number" : "5.1.1",
-        "build_hash" : "5395e21",
-        "build_date" : "2016-12-06T12:36:15.409Z",
+        "number" : "5.4.3",
+        "build_hash" : "eed30a8",
+        "build_date" : "2017-06-22T00:34:03.743Z",
         "build_snapshot" : false,
-        "lucene_version" : "6.3.0"
+        "lucene_version" : "6.5.1"
       },
       "tagline" : "You Know, for Search"
     }
