@@ -29,6 +29,8 @@ For local development,
 
 If you using docker, it's easy to work with Elastic stack and fluentd!
 
+    # database migration
+    make migrate/up
     # running docker containers by `docker-compose up -d`
     make run
 
