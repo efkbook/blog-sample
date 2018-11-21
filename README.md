@@ -28,9 +28,19 @@ For local development,
 ## Using Docker: make run
 
 If you using docker, it's easy to work with Elastic stack and fluentd!
-
+    # set GOPATH variable
+    # export GOPATH=/root/go
+    # make directory
+    mkdir /root/go
+    mkdir -p /root/go/src/github.com/efkbook
+    # change directory
+    cd /root/go/src/github.com/efkbook
+    # git clone
+    git clone https://github.com/efkbook/blog-sample
     # database migration
     make migrate/up
+    # build binary
+    make app/build
     # running docker containers by `docker-compose up -d`
     make run
 
