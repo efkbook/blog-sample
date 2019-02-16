@@ -3,9 +3,10 @@ package model
 import (
 	"crypto/sha256"
 	"encoding/base64"
-	"io"
 	"math/rand"
 	"time"
+
+	"golang.org/x/crypto/pbkdf2"
 )
 
 var runes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
@@ -16,12 +17,7 @@ func init() {
 
 // Stretch makes stretched password using salt.
 func Stretch(password, salt string) string {
-	var b []byte
-	s := sha256.New()
-	for i := 0; i < 1000; i++ {
-		io.WriteString(s, string(b)+password+salt)
-		b = s.Sum(nil)
-	}
+	b := pbkdf2.Key([]byte(password), []byte(salt), 16384, 32, sha256.New)
 	return base64.StdEncoding.EncodeToString(b)
 }
 
