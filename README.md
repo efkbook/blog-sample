@@ -11,7 +11,7 @@ A kind of blog for presentating EFK stack features.
 
 This repository includes following.
 
-* [fluent/fluentd](https://github.com/fluent/fluentd) v0.12 latest
+* [fluent/fluentd](https://github.com/fluent/fluentd) v0.12
 * [uken/fluent-plugin-elasticsearch](https://github.com/uken/fluent-plugin-elasticsearch)
 * Elastic v5 (Elasticsearch and Kibana)
 * Simple blog application based on [suzuken/wiki](https://github.com/suzuken/wiki) written in Go.
